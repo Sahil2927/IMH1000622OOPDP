@@ -81,3 +81,211 @@ public class ArrayInsertion {
         }
     }
 }
+
+
+// QUESTION 3
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class ArrayDeletion {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get array size and total elements from the user
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] arrayElements = new int[sizeOfArray];
+
+        // Get array elements from the user
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arrayElements[i] = scanner.nextInt();
+        }
+
+        // Display the original array
+        System.out.println("Original array: " + Arrays.toString(arrayElements));
+
+        // Get the index position for deletion
+        System.out.print("Enter the index position for deletion: ");
+        int loc = scanner.nextInt();
+
+        // Perform deletion
+        if (loc >= 1 && loc <= sizeOfArray) {
+            // Create a new array to accommodate the deleted element
+            int[] newArray = new int[sizeOfArray - 1];
+
+            // Copy elements before the deletion position
+            System.arraycopy(arrayElements, 0, newArray, 0, loc - 1);
+
+            // Copy elements after the deletion position
+            System.arraycopy(arrayElements, loc, newArray, loc - 1, sizeOfArray - loc);
+
+            // Display the updated array
+            System.out.println("Array after deletion: " + Arrays.toString(newArray));
+        } else {
+            System.out.println("Invalid index position for deletion.");
+        }
+    }
+}
+
+
+// QUESTION 4
+
+import java.util.Scanner;
+
+public class ArraySearch {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get array size from the user
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] arrayElements = new int[sizeOfArray];
+
+        // Get array elements from the user
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arrayElements[i] = scanner.nextInt();
+        }
+
+        // Display the original array
+        System.out.print("Original array: ");
+        for (int element : arrayElements) {
+            System.out.print(element + " ");
+        }
+
+        // Get the element to be searched
+        System.out.print("\nEnter the element to be searched: ");
+        int searchElement = scanner.nextInt();
+
+        // Perform search
+        boolean found = false;
+        for (int i = 0; i < sizeOfArray; i++) {
+            if (arrayElements[i] == searchElement) {
+                found = true;
+                System.out.println("Element found at index " + i);
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Element not found in the array.");
+        }
+    }
+}
+
+// QUESTION 5
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class DuplicateElements {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get array size from the user
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] arrayElements = new int[sizeOfArray];
+
+        // Get array elements from the user
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arrayElements[i] = scanner.nextInt();
+        }
+
+        // Display the original array
+        System.out.print("Original array: ");
+        for (int element : arrayElements) {
+            System.out.print(element + " ");
+        }
+
+        // Use a HashMap to store element frequencies
+        Map<Integer, Integer> elementFrequencyMap = new HashMap<>();
+
+        // Find and print duplicate elements with their frequency
+        System.out.println("\nDuplicate elements and their frequency of occurrence:");
+
+        for (int element : arrayElements) {
+            elementFrequencyMap.put(element, elementFrequencyMap.getOrDefault(element, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : elementFrequencyMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println("Element " + entry.getKey() + ": " + entry.getValue() + " times");
+            }
+        }
+    }
+}
+
+
+// QUESTION 6
+
+import java.util.Scanner;
+
+public class SeparateEvenOddArrays {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get array size from the user
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] originalArray = new int[sizeOfArray];
+        int[] evenArray, oddArray;
+        int evenCount = 0, oddCount = 0;
+
+        // Get array elements from the user
+        System.out.println("Enter array elements:");
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            originalArray[i] = scanner.nextInt();
+        }
+
+        // Determine the size of even and odd arrays
+        for (int num : originalArray) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        // Initialize even and odd arrays
+        evenArray = new int[evenCount];
+        oddArray = new int[oddCount];
+
+        // Populate even and odd arrays
+        int evenIndex = 0, oddIndex = 0;
+        for (int num : originalArray) {
+            if (num % 2 == 0) {
+                evenArray[evenIndex++] = num;
+            } else {
+                oddArray[oddIndex++] = num;
+            }
+        }
+
+        // Display the original array
+        System.out.print("\nOriginal array: ");
+        for (int element : originalArray) {
+            System.out.print(element + " ");
+        }
+
+        // Display the even array
+        System.out.print("\nEven array: ");
+        for (int element : evenArray) {
+            System.out.print(element + " ");
+        }
+
+        // Display the odd array
+        System.out.print("\nOdd array: ");
+        for (int element : oddArray) {
+            System.out.print(element + " ");
+        }
+    }
+}

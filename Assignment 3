@@ -1,3 +1,5 @@
+// QUESTION 1
+
 import java.util.Scanner;
 
 public class ShapeCalculator {
@@ -63,3 +65,47 @@ public class ShapeCalculator {
         return 4 * side;
     }
 }
+
+
+// QUESTION 2
+
+import java.util.Scanner;
+
+public class BankUserValidator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input and validate user name
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        if (isValidName(name)) {
+            System.out.println("Name is valid.");
+        } else {
+            System.out.println("Invalid name. Please enter alphabets only.");
+            return;
+        }
+
+        // Input and validate user age
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+        if (isValidAge(age)) {
+            System.out.println("Age is valid.");
+        } else {
+            System.out.println("Invalid age. Please enter an age greater than 3 and less than 15.");
+        }
+    }
+
+    // Method overloading for validating name
+    private static boolean isValidName(String name) {
+        return name.matches("[a-zA-Z]+");
+    }
+
+    // Method overloading for validating age
+    private static boolean isValidAge(int age) {
+        return age > 3 && age < 15;
+    }
+}
+
+
+// QUESTION 3
+

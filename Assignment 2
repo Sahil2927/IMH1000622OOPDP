@@ -289,3 +289,153 @@ public class SeparateEvenOddArrays {
         }
     }
 }
+
+
+// QUESTION 7
+
+import java.util.Scanner;
+
+public class CombinedOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the number of elements in the array
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+
+        // Input the elements of the array
+        int[] originalArray = new int[n];
+        System.out.println("Enter the elements of the array in a random order:");
+        for (int i = 0; i < n; i++) {
+            originalArray[i] = scanner.nextInt();
+        }
+
+        // Create arrays for even and odd numbers
+        int[] evenArray = new int[n];
+        int evenCount = 0;
+        int[] oddArray = new int[n];
+        int oddCount = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (originalArray[i] % 2 == 0) {
+                evenArray[evenCount++] = originalArray[i];
+            } else {
+                oddArray[oddCount++] = originalArray[i];
+            }
+        }
+
+        // Display original, even, and odd arrays
+        System.out.println("\nOriginal Array:");
+        displayArray(originalArray, n);
+
+        System.out.println("\nEven Numbers Array:");
+        displayArray(evenArray, evenCount);
+
+        System.out.println("\nOdd Numbers Array:");
+        displayArray(oddArray, oddCount);
+
+        // Input the position to divide the array
+        System.out.print("Enter the position to divide the array: ");
+        int position = scanner.nextInt();
+
+        // Check if the position is valid
+        if (position < 0 || position >= n) {
+            System.out.println("Invalid position. Please enter a valid position.");
+            return;
+        }
+
+        // Divide the array into two parts
+        int[] firstPart = new int[position];
+        int[] secondPart = new int[n - position];
+
+        for (int i = 0; i < position; i++) {
+            firstPart[i] = originalArray[i];
+        }
+
+        for (int i = position; i < n; i++) {
+            secondPart[i - position] = originalArray[i];
+        }
+
+        // Display divided arrays
+        System.out.println("\nFirst Part of the Array:");
+        displayArray(firstPart, position);
+
+        System.out.println("\nSecond Part of the Array:");
+        displayArray(secondPart, n - position);
+
+        // Check for duplicate elements
+        checkForDuplicates(originalArray, n);
+
+    }
+
+    // Helper method to display the elements of an array
+    private static void displayArray(int[] array, int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Helper method to check for duplicate elements in an array
+    private static void checkForDuplicates(int[] array, int n) {
+        boolean hasDuplicates = false;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (array[i] == array[j]) {
+                    hasDuplicates = true;
+                    System.out.println("\nDuplicate Element Found: " + array[i]);
+                }
+            }
+        }
+
+        if (!hasDuplicates) {
+            System.out.println("\nNo Duplicate Elements Found.");
+        }
+    }
+}
+
+
+// QUESTION 8
+
+import java.util.Scanner;
+
+public class PeakElementFinder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the number of elements in the array
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+
+        // Input the elements of the array
+        int[] array = new int[n];
+        System.out.println("Enter the elements of the array in a random order:");
+        for (int i = 0; i < n; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        // Find and display the peak element
+        int peakElement = findPeakElement(array, n);
+        System.out.println("Peak Element in the Array: " + peakElement);
+    }
+
+    // Helper method to find the peak element in an array
+    private static int findPeakElement(int[] array, int n) {
+        if (n == 1) {
+            return array[0];
+        } else if (array[0] >= array[1]) {
+            return array[0];
+        } else if (array[n - 1] >= array[n - 2]) {
+            return array[n - 1];
+        }
+
+        for (int i = 1; i < n - 1; i++) {
+            if (array[i] >= array[i - 1] && array[i] >= array[i + 1]) {
+                return array[i];
+            }
+        }
+
+        return -1; // If no peak element is found
+    }
+}

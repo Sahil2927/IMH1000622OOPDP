@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class ShapeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose a shape (rectangle/circle/square): ");
+        String shape = scanner.nextLine();
+
+        switch (shape.toLowerCase()) {
+            case "rectangle":
+                System.out.print("Enter length: ");
+                double length = scanner.nextDouble();
+                System.out.print("Enter width: ");
+                double width = scanner.nextDouble();
+                System.out.println("Area: " + calculateArea(length, width));
+                System.out.println("Perimeter: " + calculatePerimeter(length, width));
+                break;
+
+            case "circle":
+                System.out.print("Enter radius: ");
+                double radius = scanner.nextDouble();
+                System.out.println("Area: " + calculateArea(radius));
+                System.out.println("Circumference: " + calculateCircumference(radius));
+                break;
+
+            case "square":
+                System.out.print("Enter side length: ");
+                double side = scanner.nextDouble();
+                System.out.println("Area: " + calculateArea(side));
+                System.out.println("Perimeter: " + calculatePerimeter(side));
+                break;
+
+            default:
+                System.out.println("Invalid shape.");
+        }
+    }
+
+    // Method overloading for rectangle
+    private static double calculateArea(double length, double width) {
+        return length * width;
+    }
+
+    private static double calculatePerimeter(double length, double width) {
+        return 2 * (length + width);
+    }
+
+    // Method overloading for circle
+    private static double calculateArea(double radius) {
+        return Math.PI * Math.pow(radius, 2);
+    }
+
+    private static double calculateCircumference(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    // Method overloading for square
+    private static double calculateArea(double side) {
+        return Math.pow(side, 2);
+    }
+
+    private static double calculatePerimeter(double side) {
+        return 4 * side;
+    }
+}

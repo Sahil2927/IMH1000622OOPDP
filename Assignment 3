@@ -109,3 +109,142 @@ public class BankUserValidator {
 
 // QUESTION 3
 
+public class Lab3Question3
+ {
+
+    public static void main(String[] args) {
+        displayTotalArguments(10, 20, 30, 40);
+
+        int maxNumber = findMaximum(15, 8, 25, 4, 18);
+        System.out.println("Maximum number: " + maxNumber);
+
+        int sum = calculateSum(5, 10, 15, 20);
+        System.out.println("Sum of elements: " + sum);
+
+        checkDifferentTypes("Hello", 42, 3.14, true);
+    }
+
+    private static void displayTotalArguments(int... numbers) {
+        System.out.println("Total number of arguments: " + numbers.length);
+    }
+
+    private static int findMaximum(int... numbers) {
+        if (numbers.length == 0) {
+            throw new IllegalArgumentException("No numbers provided");
+        }
+
+        int max = numbers[0];
+        for (int num : numbers) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+
+    private static int calculateSum(int... numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    private static void checkDifferentTypes(Object... args) {
+        System.out.println("Number of arguments with different types: " + args.length);
+        for (Object arg : args) {
+            System.out.println("Type: " + arg.getClass().getSimpleName() + ", Value: " + arg);
+        }
+    }
+}
+
+
+// QUESTION 4
+
+import java.util.Scanner;
+
+public class Lab3Question4 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+        String lowercaseString = convertToLowerCase(inputString);
+        System.out.println("String in lowercase: " + lowercaseString);
+
+        displayStringLength(inputString);
+
+        scanner.close();
+    }
+
+    private static String convertToLowerCase(String str) {
+        return str.toLowerCase();
+    }
+
+    private static void displayStringLength(String str) {
+        System.out.println("Total length of the string: " + str.length());
+    }
+}
+
+
+// QUESTION 5
+
+public class Lab3Question5 {
+
+    public static void main(String[] args) {
+        int[] numbers = { 23, 56, 12, 78, 41 };
+
+        int sum = calculateSum(numbers);
+
+        displaySumInReverse(sum);
+    }
+
+    private static int calculateSum(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    private static void displaySumInReverse(int number) {
+        System.out.print("Sum in reverse order: ");
+        String reversedSum = new StringBuilder(String.valueOf(number)).reverse().toString();
+        int reversedNumber = Integer.parseInt(reversedSum);
+        System.out.println(reversedNumber);
+    }
+}
+
+
+// QUESTION 6
+
+public class Lab2Question6 {
+
+    public static void main(String[] args) {
+        TypePromotionDemo demo = new TypePromotionDemo();
+
+        demo.displayValue(10);        
+        demo.displayValue(25.5f);     
+        demo.displayValue(35L);       
+        demo.displayValue("Hello");   
+
+
+    }
+
+    private void displayValue(int x) {
+        System.out.println("Method with int parameter: " + x);
+    }
+
+    private void displayValue(float x) {
+        System.out.println("Method with float parameter: " + x);
+    }
+
+    private void displayValue(long x) {
+        System.out.println("Method with long parameter: " + x);
+    }
+
+    private void displayValue(String str) {
+        System.out.println("Method with String parameter: " + str);
+    }
+}

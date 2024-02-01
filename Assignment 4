@@ -1,0 +1,232 @@
+// QUESTION 1
+
+package Assignment4;
+
+import java.util.*;
+public class Employee {
+    private int employeeId;
+    String employeeName;
+    protected String employeeDepartment;
+
+    public void setEmployeeDetailsPrivate(int id,String name,String department){
+        employeeId=id;
+        employeeName=name;
+        employeeDepartment=department;
+    }
+    public String getEmployeeDetailsPrivate(){
+        return "ID: "+ employeeId +"Name: "+ employeeName +"Department: "+ employeeDepartment;
+    }
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("EmployeeID: ");
+        int id = sc.nextInt();
+        System.out.println("EmployeeName: ");
+        sc.nextLine();
+        String name= sc.nextLine();
+        System.out.println("EmployeeDepartment: ");
+        String department=sc.nextLine();
+
+    }
+}
+
+
+// QUESTION 2
+
+public class Car {
+    private String brand;
+
+    public Car(){
+        this.brand="Ford";
+    }
+    public String getBrand(){
+        return brand;
+    }
+}
+public class Sample{
+    public static void main(String[]args){
+        Car myCar =new Car();
+        String carBrand=myCar.getBrand();
+        System.out.println("Car Brand: "+carBrand);
+    }
+}
+
+
+// QUESTION 3
+
+import java.util.Scanner;
+
+class Student {
+    int student_roll;
+    String student_name;
+    int[] student_marks;
+
+    // Parameterized constructor
+    public Student(int roll, String name, int[] marks) {
+        this.student_roll = roll;
+        this.student_name = name;
+        this.student_marks = marks;
+    }
+
+    // Non-parameterized constructor
+    public Student() {
+        this.student_roll = 0;
+        this.student_name = "Unknown";
+        this.student_marks = new int[]{0, 0, 0, 0, 0};
+    }
+
+    public void displayDetails() {
+        System.out.println("Roll: " + this.student_roll);
+        System.out.println("Name: " + this.student_name);
+        System.out.print("Marks: ");
+        for (int mark : this.student_marks) {
+            System.out.print(mark + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Creating the first student object with user input
+        System.out.print("Enter roll number for student 1: ");
+        int roll1 = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Enter name for student 1 (press Enter for default 'Unknown'): ");
+        String name1 = scanner.nextLine().isEmpty() ? "Unknown" : scanner.nextLine();
+        int[] marks1 = new int[5];
+        System.out.println("Enter marks for student 1:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            marks1[i] = scanner.nextInt();
+        }
+
+        Student student1 = new Student(roll1, name1, marks1);
+
+        // Creating the second student object with user input
+        System.out.print("Enter roll number for student 2: ");
+        int roll2 = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Enter name for student 2 (press Enter for default 'Unknown'): ");
+        String name2 = scanner.nextLine().isEmpty() ? "Unknown" : scanner.nextLine();
+        int[] marks2 = new int[5];
+        System.out.println("Enter marks for student 2:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            marks2[i] = scanner.nextInt();
+        }
+
+        Student student2 = new Student(roll2, name2, marks2);
+
+        // Displaying details of both students
+        System.out.println("\nDetails of Student 1:");
+        student1.displayDetails();
+
+        System.out.println("\nDetails of Student 2:");
+        student2.displayDetails();
+    }
+}
+
+
+// QUESTION 4
+
+class Bachaa {
+    int student_roll;
+    String student_name;
+    int[] student_marks;
+
+    // Parameterized constructor
+    public Bachaa(int roll, String name, int[] marks) {
+        this.student_roll = roll;
+        this.student_name = name;
+        this.student_marks = marks;
+    }
+
+    // Method to calculate and print the average marks
+    public void calculateAndPrintAverage() {
+        int sum = 0;
+        for (int mark : this.student_marks) {
+            sum += mark;
+        }
+        double average = (double) sum / this.student_marks.length;
+        System.out.println("Average marks for " + this.student_name + ": " + average);
+    }
+
+    public static void main(String[] args) {
+        // Creating three student objects with parameterized constructor
+        Bachaa student1 = new Bachaa(101, "Alice", new int[]{80, 75, 90, 85, 88});
+        Bachaa student2 = new Bachaa(102, "Bob", new int[]{70, 85, 92, 78, 95});
+        Bachaa student3 = new Bachaa(103, "Charlie", new int[]{88, 90, 85, 79, 92});
+
+        // Calling method to calculate and print average marks for each student
+        student1.calculateAndPrintAverage();
+        student2.calculateAndPrintAverage();
+        student3.calculateAndPrintAverage();
+    }
+}
+
+
+// QUESTION 5
+
+import java.util.Scanner;
+
+public class AreaCalculator {
+    private double length;
+    private double breadth;
+    private double side;
+
+    public AreaCalculator(double... dimensions) {
+        if (dimensions.length == 1) {
+            this.side = dimensions[0];
+        } else if (dimensions.length == 2) {
+            this.length = dimensions[0];
+            this.breadth = dimensions[1];
+        } else {
+            this.length = 0;
+            this.breadth = 0;
+            this.side = 0;
+        }
+    }
+
+    public void calculateRectangleArea(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+        double area = length * breadth;
+        System.out.println("Area of Rectangle: " + area);
+    }
+
+    public void calculateSquareArea(double side) {
+        this.side = side;
+        double area = side * side;
+        System.out.println("Area of Square: " + area);
+    }
+
+    public void displayDetails() {
+        System.out.println("Length: " + length);
+        System.out.println("Breadth: " + breadth);
+        System.out.println("Side: " + side);
+    }
+
+    public void setDimensionsFromUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Length: ");
+        this.length = scanner.nextDouble();
+
+        System.out.print("Enter Breadth: ");
+        this.breadth = scanner.nextDouble();
+
+        System.out.print("Enter Side: ");
+        this.side = scanner.nextDouble();
+    }
+
+    public static void main(String[] args) {
+        AreaCalculator shape1 = new AreaCalculator();
+        shape1.setDimensionsFromUser();
+        shape1.calculateRectangleArea(shape1.length, shape1.breadth);
+        shape1.calculateSquareArea(shape1.side);
+        shape1.displayDetails();
+        System.out.println();
+    }
+
+
+}

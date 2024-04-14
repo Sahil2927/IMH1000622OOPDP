@@ -1,0 +1,155 @@
+QUESTION 1a.
+
+class Outer{
+    class Inner{
+        void display(){
+            System.out.println("Inside display Inner");
+        }
+    }
+}
+public class Ques1a {
+    public static void main(String[] args) {
+        Outer.Inner in =new Outer().new Inner();
+        in.display();
+    }
+}
+
+1b.
+class Outer1{
+    void display_Outer1(){
+        System.out.println("In Outer display");
+        class Inner1{
+            void display_Inner1(){
+                System.out.println("In Inner Meathod");
+            }    
+        }
+        Inner1 in=new Inner1();
+        in.display_Inner1();
+    }
+}
+public class Ques1b {
+    public static void main(String[] args) {
+        Outer1 out=new Outer1();
+        out.display_Outer1();
+    }
+}
+
+1c.
+class Outer2{
+    static class Inner2{
+        public static void display(){
+            System.out.println("Inside display Inner");
+        }
+    }
+}
+public class Ques1c {
+    public static void main(String[] args) {
+        Outer2.Inner2.display();
+    }
+}
+
+QUESTION 2
+
+abstract class Bike{
+    abstract void run();    
+}
+class Honda extends Bike{
+    void run(){
+        System.out.println("hello I am running with Honda");
+    }
+}
+public class Ques2 {
+    public static void main(String[] args) {
+        Bike obj=new Honda();
+        obj.run();
+    }
+}
+
+QUESTION 3
+
+import java.util.*;
+abstract class Shape{
+      abstract void  perimeter();
+      abstract void area();
+}
+class Circle extends Shape{
+    int r;
+    void area(){
+        System.out.println("Circle area  : "+3.14*r*r);
+    }
+    void perimeter(){
+        System.out.println("Circle Perimeter : "+2*3.14*r);
+    }
+}
+class Rectangle extends Shape{
+    int length;
+    int breadth;
+    void perimeter(){
+        System.out.println("Rectangle Perimeter :"+2*(length+breadth));
+    }
+    void area(){
+        System.out.println("Rectangle area :"+length*breadth);
+    }
+    public static void main(String[] args){ 
+        Scanner sc=new Scanner(System.in);
+        Rectangle obj1=new Rectangle();
+        System.out.println("Entet length of Rectangle:");
+        obj1.length=sc.nextInt();
+        System.out.println("Enter breadth of Rectangle");
+        obj1.breadth=sc.nextInt();
+        obj1.area();
+        obj1.perimeter();
+        Circle obj2=new Circle();
+        System.out.println("Enter Radius of Circle");
+        obj2.r=sc.nextInt();
+        obj2.area();
+        obj2.perimeter();     
+    }
+}
+
+QUESTION 4
+
+import java.util.*;
+interface Person{
+    int x=06;
+    void name();
+    void Company();
+}
+class Employee implements Person{
+    String s;
+    public void name(){
+        System.out.println("Employee name:"+s);
+    } 
+    public void Company(){
+        System.out.println(s+ "Bane");
+    }
+    public static void main(String[] args) { 
+        Scanner sc=new Scanner(System.in);
+        Employee obj=new Employee();
+        System.out.println("Enter Employee Name");
+        obj.s=sc.next();
+        obj.Name();
+        obj.Company();     
+    } 
+}
+
+QUESTION 5
+
+abstract class Base1{
+    abstract class Base2{
+        abstract void display();
+    }
+}
+class derived1 extends Base1{
+    class derived2 extends Base2{
+        void display(){
+            System.out.println("In ineer class of derived 1 that is derived 2");
+        }
+    }
+}
+public class Ques5 {
+    public static void main(String[] args) {
+        Base1.Base2 obj=new derived1().new derived2();
+        obj.display();
+    }
+}

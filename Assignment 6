@@ -1,3 +1,5 @@
+QUESTION 1
+
 public class student {
     String student_name;
     int student_roll;
@@ -21,5 +23,145 @@ public class student {
         System.out.println();
         s1.display();
         
+    }
+}
+
+QUESTION 2
+
+import java.util.*;
+class student1{
+    String student_name;
+    int student_roll;
+    int student_fee;
+    
+    student1(String student_name,int student_roll,int student_fee){
+      
+        this.student_name=student_name;
+        this.student_fee=student_fee;
+        this.student_roll=student_roll;
+    }
+    student1(){
+        
+        this("Sahil",1,40);
+    }
+    void show(Object o ){
+        display(this);
+    }
+     
+    void display(Object o){
+        System.out.println("student  name:"+this.student_name);
+        System.out.println("student  roll:"+this.student_roll);
+        System.out.println("student  fee:"+this.student_fee);
+       
+    }
+    
+        
+}
+public class Ques2 {
+    public static void main(String[] args) {
+        String s1;
+        int r1;
+        int f1;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter Student1 name:");
+        s1=sc.nextLine();
+        System.out.println("Enter roll:");
+        r1=sc.nextInt();
+        System.out.println("Enter Fee");
+        f1=sc.nextInt();
+        student1 obj2=new student1();
+        student1 obj1=new student1(s1,r1,f1);
+        obj1.show(obj1);
+        obj2.show(obj2);
+        
+    }
+}
+
+QUESTION 3
+
+class student2{
+    String student_name;
+    int student_roll;
+    int student_fee;
+    
+    student2(String student_name,int student_roll,int student_fee){
+      
+        this.student_name=student_name;
+        this.student_fee=student_fee;
+        this.student_roll=student_roll;
+    }
+    student2(){
+        this("Sahil",6,10);    
+    }
+    void show(Object o ){
+        display(this);
+    }  
+    void display(Object o){
+        System.out.println("student  name:"+this.student_name);
+        System.out.println("student  roll:"+this.student_roll);
+        System.out.println("student  fee:"+this.student_fee);       
+    }
+    public static void main(String[] args) {
+        String s1;
+        int r1;
+        int f1;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter Student1 name:");
+        s1=sc.nextLine();
+        System.out.println("Enter roll:");
+        r1=sc.nextInt();
+        System.out.println("Enter Fee");
+        f1=sc.nextInt();
+        student1 obj2=new student1();
+        student1 obj1=new student1(s1,r1,f1);
+        obj1.show(obj1);
+        obj2.show(obj2);
+    }    
+}
+
+QUESTION 5
+
+import java.util.*;
+class PrintNumber{
+    
+    PrintNumber(Integer n,Float f,Double h){
+       System.out.println("Wrapper Class Printing");
+        System.out.println("Integer "+n);
+        System.out.println("Float "+f);
+        System.out.println("Double "+h);
+    }    
+     public static void main(String[] args) {
+        int n;
+        double h;
+        float f;    
+        Scanner sc =new Scanner(System.in);
+        n=sc.nextInt();
+        h=sc.nextDouble();
+        f=sc.nextFloat();
+        Integer num=new Integer(n);
+        Float k= new Float(h);
+        Double y=new Double(f);
+        PrintNumber obj1=new PrintNumber(num,k,y);      
+    }    
+}
+
+QUESTION 6
+
+import java.util.*;
+class MyWrapper_Class{
+    private int i;
+    MyWrapper_Class(int j){
+        i=j;
+    }
+    public int intValue(){
+        return i+10;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter n:");
+        int n=sc.nextInt();
+        MyWrapper_Class obj1=new MyWrapper_Class(n);
+        System.out.println("My wrapper Class Output");
+        System.out.println(obj1.intValue());     
     }
 }
